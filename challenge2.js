@@ -1,15 +1,14 @@
 function carSpeed(speed) {
-    if ( speed < 70) {
+    if (speed < 70) {
         return "Ok";
     }
-    const count = math.floor((speed-70))/5
-    else  (count >12)
-        return "License suspended"; {
+    const count = Math.floor((speed - 70) / 5);
+    if (count > 12) {
+        return "License suspended";
     }
-    else  {
-    return "E";
-    }
+    return `Points: ${count}`;
 }
-    const grade = calculateGrade (70);
-    console.log(grade);
-    
+
+
+const result = carSpeed(85); 
+console.log(result);
