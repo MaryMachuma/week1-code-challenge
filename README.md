@@ -1,6 +1,6 @@
 # Toy Problems: 
 
-This repository contains solutions to three toy problems  designed to enhance problem-solving and programming skills.
+This repository contains solutions to three toy problems designed to enhance problem-solving and programming skills.
 
 
 ## Challenges
