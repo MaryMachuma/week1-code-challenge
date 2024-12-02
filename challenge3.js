@@ -16,13 +16,13 @@ const payeDeductions = function (basicSalary) {
     } else return 'Input Basic Salary'
 }
 
-//Function to calculate SHIF as NHIF is not valid anymore
+
 const shifDeductions = function (basicSalary){
    return basicSalary * 0.0275;
 }
 
 
-//Function to calculate NSSF
+
 const nssfDeductionsTier1 = function (basicSalary){
    if (basicSalary <= 7000) {
     return basicSalary * 0.06;
@@ -38,13 +38,11 @@ const nssfDeductionsTier2 = function (basicSalary) {
     }
 };
 
-//test case for salary of 100000
 basicSalary = 100000
 
 const totalDeductions = payeDeductions(basicSalary) + nssfDeductionsTier2(basicSalary) + shifDeductions(basicSalary);
 
-//calculate net salary
 const netSalary = basicSalary - totalDeductions;
 
-//dispaly net salary
+
 console.log("Net salary:" + netSalary);
