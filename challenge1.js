@@ -1,27 +1,29 @@
-// Function to calculate a grade based on the score
-function calculateGrade(grades) {
-    // Check if the grade is greater than 79
-    if (grades > 79) {
-        return "A"; // If greater than 79, return grade "A"
-    }
-    // Check if the grade is between 60 and 79 (inclusive of 60)
-    else if (grades >= 60) {
-        return "B"; // If between 60 and 79, return grade "B"
-    }
-    // Check if the grade is between 50 and 59 (inclusive of 50)
-    else if (grades >= 50) {
-        return "C"; // If between 50 and 59, return grade "C"
-    }
-    // Check if the grade is between 40 and 49 (inclusive of 40)
-    else if (grades >= 40) {
-        return "D"; // If between 40 and 49, return grade "D"
-    }
-    // If the grade is below 40
-    else {
-        return "E"; // Return grade "E"
-    }
+//Import 'readline' module from Node.js to handle input and output in the VSCode terminal
+import {createInterface} from 'readline';
+
+function getGrade() {
+    //Create interface (rl) for reading user input and outputting to the terminal
+    const rl = createInterface({
+        //Input will come from terminal (standard input), output will go to the terminal (standard output)
+        input: process.stdin, output: process.stdout 
+    });
+
+    rl.question('Input student marks (0-100):', (input) => {
+        //Parse the input to an integer max
+        const marks = parseInt(input);
+
+        if (marks >= 0 && marks <= 100) {
+            //Determine grade using ternary operator
+            const grade = marks > 79 ? 'A' : marks >= 60 ? 'B' : marks >= 50 ? 'C' : marks >= 40 ? 'D' : 'E';                    
+            console.log(`${grade}`);
+        } 
+        else {
+            console.log('Invalid input.');
+        }
+        //Close readline interface to end program
+        rl.close();
+    });
 }
 
-// Example usage of the calculateGrade function
-const grade = calculateGrade(70); // Input score of 70
-console.log(grade); // Output the grade to the console
+//Call function to execute program
+getGrade();
