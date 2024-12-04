@@ -1,29 +1,34 @@
-//Import 'readline' module from Node.js to handle input and output in the VSCode terminal
-import {createInterface} from 'readline';
 
-function getGrade() {
-    //Create interface (rl) for reading user input and outputting to the terminal
-    const rl = createInterface({
-        //Input will come from terminal (standard input), output will go to the terminal (standard output)
-        input: process.stdin, output: process.stdout 
-    });
+//student grade generator
+function gradeGenerator() {
+    //r1.question("Input student marks (0-100): ", (input) => {
+        let input = prompt("Input your marks: ")
+        let mark = Number(input);
 
-    rl.question('Input student marks (0-100):', (input) => {
-        //Parse the input to an integer max
-        const marks = parseInt(input);
-
-        if (marks >= 0 && marks <= 100) {
-            //Determine grade using ternary operator
-            const grade = marks > 79 ? 'A' : marks >= 60 ? 'B' : marks >= 50 ? 'C' : marks >= 40 ? 'D' : 'E';                    
-            console.log(`${grade}`);
-        } 
-        else {
-            console.log('Invalid input.');
+        // Validate the input
+        if (isNaN(mark) || mark < 0 || mark > 100) {
+            console.log("Invalid input. Please enter a number between 0 and 100.");
+            return gradeGenerator(); // Retry input
         }
-        //Close readline interface to end program
-        rl.close();
-    });
+
+        // Determine the grade
+        let grade;
+        if (mark > 79) {
+            return "A";
+        } else if (mark >= 60) {
+            return "B";
+        } else if (mark >= 50) {
+            return"C";
+        } else if (mark >= 40) {
+            return"D";
+        } else {
+            return "E";
+        }
+
+        //console.log(`The student's grade is: ${grade}`);
+        //r1.close(); 
+    //});
 }
 
-//Call function to execute program
-getGrade();
+
+console.log(gradeGenerator());
