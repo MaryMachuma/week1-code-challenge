@@ -1,34 +1,36 @@
+// Import the readline module to handle user input
+const readline = require('readline');
 
-//student grade generator
-function gradeGenerator() {
-    //r1.question("Input student marks (0-100): ", (input) => {
-        let input = prompt("Input your marks: ")
-        let mark = Number(input);
+// Create an interface for reading input and writing output
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 
-        // Validate the input
-        if (isNaN(mark) || mark < 0 || mark > 100) {
-            console.log("Invalid input. Please enter a number between 0 and 100.");
-            return gradeGenerator(); // Retry input
-        }
+// Function to determine the grade based on marks
+function studentGrade() {
+    // Prompt the user to enter marks
+    rl.question('Enter student marks (0-100): ', (input) => {
+        const marks = parseInt(input); // Convert input string to a number
 
-        // Determine the grade
-        let grade;
-        if (mark > 79) {
-            return "A";
-        } else if (mark >= 60) {
-            return "B";
-        } else if (mark >= 50) {
-            return"C";
-        } else if (mark >= 40) {
-            return"D";
+        // Validate the input to ensure it's within the valid range
+        if (isNaN(marks) || marks < 0 || marks > 100) {
+            console.log('Invalid input. Please enter a number between 0 and 100.');
+        } else if (marks > 79) {
+            console.log('Grade: A');
+        } else if (marks >= 60) { // No need to re-check <= 79 since earlier conditions exclude higher values
+            console.log('Grade: B');
+        } else if (marks >= 50) {
+            console.log('Grade: C');
+        } else if (marks >= 40) {
+            console.log('Grade: D');
         } else {
-            return "E";
+            console.log('Grade: E');
         }
 
-        //console.log(`The student's grade is: ${grade}`);
-        //r1.close(); 
-    //});
+        rl.close(); // Close the interface after processing
+    });
 }
 
-
-console.log(gradeGenerator());
+// Call the function to start the program
+studentGrade();
